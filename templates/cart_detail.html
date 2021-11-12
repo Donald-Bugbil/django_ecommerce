@@ -1,0 +1,70 @@
+{% extends '_base.html' %}
+
+
+{% block content %}
+    <div class="container" style="margin-top: 30vh;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col" colspan="2">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for item  in cart %}
+                    
+                    {% with product=item.product  %}
+                        <tr>
+                            <td>
+                                <form action="{% url "cart:cart_remove" product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm px-3">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
+                            </td>
+                            <td><img src="{{ product.image.url }}" alt="" style="height:30px; width:30px;"></td>
+                            <td colspan="2">{{ product.name }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.total_price }}</td>
+                            <td><a href="{% url 'order:ordercreate' product.id %}">checkout</a></td>
+                        </tr>
+                    {% endwith %}
+                        
+                    
+                {% endfor %}
+                <tr>
+                    <td colspan="7">
+
+                    </td>
+                </tr>
+                    
+            </tbody>
+    
+        </table>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Total</th>
+                                <td style="font-weight: bolder;">{{ cart.get_total_price }}</td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    
+    </div>
+    
+{% endblock %}

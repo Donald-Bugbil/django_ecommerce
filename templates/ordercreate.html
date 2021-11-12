@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/order.css' %}" />
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container" style="margin-top: 20vh;">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit">Place order</button>
+            </form>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="d-flex justify-content-center">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Your Order</h5>
+                        <ul>
+                            <li>{{ item.quantity }}x {{ item.product.name }} <span class="mx-5" style="font-weight: bold;">{{ item.total_price }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

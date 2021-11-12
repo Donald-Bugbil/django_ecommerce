@@ -1,0 +1,175 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+    <!--Carousel Wrapper-->
+  <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators hello">
+      <li class="cal-indicator" data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+      <li class="cal-indicator" data-target="#multi-item-example" data-slide-to="1"></li>
+      <li class="cal-indicator" data-target="#multi-item-example" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+
+    <!--First slide-->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active bg-image hover-overlay ripple shadow-1-strong rounded">
+        <div class="view">
+          <img class="d-block w-100" src="{% static 'images/22.jpg' %}" alt="First slide">
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(192, 12, 132, 0.2)"></div>
+          </a>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">SHOP MORE,SPEND LESS</h3>
+          <hr class="new4" width="40%">
+        </div>
+      </div>
+      <!--frist slide ends here-->
+
+      <!--second slide-->
+      <div class="carousel-item bg-image hover-overlay ripple shadow-1-strong rounded">
+        <!--Mask color-->
+        <div class="view">
+          <img class="d-block w-100" src="{% static 'images/21.jpg' %}" alt="Second slide">
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(192, 12, 132, 0.2)"></div>
+          </a>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">Browse Through thousand of options </h3>
+          <hr class="new4" width="40%">
+        </div>
+      </div>
+      <!--second slideslide ends here-->
+
+      <!--third slide-->
+      <div class="carousel-item bg-image hover-overlay ripple shadow-1-strong rounded">
+        <!--Mask color-->
+        <div class="view">
+          <img class="d-block w-100" src="{% static 'images/17.jpg' %}" alt="Third slide">
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(2, 2, 48, 0.5)"></div>
+          </a>
+        </div>
+        <div class="carousel-caption">
+          <h2 class="h3-responsive">Stay Safe at home and let us deliver</h2>
+          <hr class="new4" width="40%">
+        </div>
+      </div>
+      <!--third slide ends here-->
+    </div>
+    <!--/.Slides-->
+  </div>
+  <!--/.Carousel Wrapper-->
+    <!--product card starts here-->
+  <div id="toast"></div>
+  <div id="toast-cart"></div>
+  <div class="container">
+    <h3 style="text-align: center; font-family: sonia;">OUR PRODUCTS</h3>
+    <hr>
+    <br>
+    <h4 style="text-align: center;">Fashion and Lifestyle</h4>
+    <div class="row">
+      
+      {% for product in apparels  %}
+        <div class="col-md-4">
+          <div class="card">
+            <span id="heart" class="heart"><i onclick="wishList()" class="fa fa-heart"></i></span>
+            <img src="{{product.image.url}}" class="first-image">
+            <div class="card-body">
+              <a href="{% url 'store:productdetail' product.slug %}">
+                <center><h5 style="font-family: fantasy;">Preview</h5></center>
+              </a>
+              <hr>
+              <center>
+                <h5 class="card-title">{{product.name}}</h5>
+              </center>
+            </div>
+
+            <div class="off-info">
+              <h5 class="sm-title">
+                25% off
+              </h5>
+            </div>
+          </div>
+        </div>
+        
+      {% endfor %}
+    </div>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h4 style="text-align: center;">Food and Health</h4>
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="card">
+          <span id="heart" class="heart"><i onclick="wishList()" class="fa fa-heart"></i></span>
+          <img src="{% static 'images/neonbrand-aNsOApRAs-w-unsplash.jpg' %}" class="first-image">
+          <div class="card-body">
+            <a href="#" onclick="addCart()">
+              <center><h5 style="font-family: fantasy;">Preview</h5></center>
+            </a>
+            <hr>
+            <center>
+              <h5 class="card-title">Vegetables</h5>
+            </center>
+          </div>
+          <div class="off-info">
+            <h5 class="sm-title">
+              65% off
+            </h5>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="card" >
+          <span id="heart-second" value="So" class="heart"><i onclick="wishList()" class="fa fa-heart"></i></span>
+          <img src="{% static 'images/roble-de-invierno-wiprNAISUaQ-unsplash.jpg' %}" class="first-image">
+          <div class="card-body">
+            <a href="#" onclick="addCart()">
+              <center><h5 style="font-family: fantasy;">Preview</h5></center>
+            </a>
+            <hr>
+            <center>
+              <h5 class="card-title">Proteins</h5>
+            </center>
+          </div>
+          <div class="off-info">
+            <h5 class="sm-title">
+              25% off
+            </h5>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="card">
+          <span id="heart-third" class="heart"><i onclick="wishList()" class="fa fa-heart"></i></span>
+          <img src="{% static 'images/vitolda-klein-OVBiRdLWFJM-unsplash.jpg' %}" class="first-image">
+          <div class="card-body">
+            <a href="#" onclick="addCart()">
+              <center><h5 style="font-family: fantasy;">Preview</h5></center>
+            </a>
+            <hr>
+            <center>
+              <h5 class="card-title">Fruits</h5>
+            </center>
+          </div>
+          <div class="off-info" id="hey">
+            <h5 class="sm-title">
+              85% off
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

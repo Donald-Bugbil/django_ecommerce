@@ -1,0 +1,550 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block head %}
+    <style>
+        .width{
+            width: 100px;
+        }
+    </style>
+{% endblock %}
+    
+
+{% block content %}
+
+
+<!--product card detail starts here-->
+<main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-8">
+        <marquee style="font-family: sonia;">
+            <h2>HURRAY FOR OUR FIRST CUSTOMERS YOU HAVE 50% OFF THE SALES!!!</h2>
+        </marquee>
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <img src="{{ product.image.url}}" class="img-fluid" alt="">
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <!--Content-->
+                <div class="p-4">
+
+                    <div class="mb-3">
+                        <a href="">
+                            <span class="badge purple mr-1">Category 2</span>
+                        </a>
+                        <a href="">
+                            <span class="badge blue mr-1">New</span>
+                        </a>
+                        <a href="">
+                            <span class="badge red mr-1">Bestseller</span>
+                        </a>
+                    </div>
+
+                    <p class="lead">
+                        <span class="mr-1">
+                            <del>$200</del>
+                        </span>
+                        <span>$100</span>
+                    </p>
+
+                    <p class="lead font-weight-bold">{{ product.name }}</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia
+                        ipsa
+                        sint voluptatibus!
+                        Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+
+                    <form action= "{% url "cart:cart_add" product.id %}" class="d-flex justify-content-left" method="post">
+                        <!-- Default input -->
+                        {% csrf_token %}
+                        {{ Quantity_select_form|crispy }}
+                        <button class="btn btn-primary btn-md my-0 p" type="submit">Add to
+                                cart></a>
+                            <i class="fas fa-shopping-cart ml-1"></i>
+                        </button>
+
+                    </form>
+
+                </div>
+                <!--Content-->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+        <hr>
+
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-6 text-center">
+
+                <h4 class="my-4 h4">Additional information</h4>
+
+                <p>You may also like:</p>
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+
+
+        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <!--Indicators-->
+            <ol class="carousel-indicators hello">
+                <li class="cal-indicator" data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                <li class="cal-indicator" data-target="#multi-item-example" data-slide-to="1"></li>
+                <li class="cal-indicator" data-target="#multi-item-example" data-slide-to="2"></li>
+            </ol>
+            <!--/.Indicators-->
+            <!--Slides-->
+
+            <br>
+            <hr>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/carlos-esteves-Ae3OHpJfngc-unsplash.jpg" class="first-image">
+                                <div class="p-4">
+                                    <div class="mb-3">
+                                        <a href="">
+                                            <span class="badge purple mr-1">Category 2</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge blue mr-1">New</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge red mr-1">Bestseller</span>
+                                        </a>
+                                    </div>
+
+                                    <p class="lead">
+                                        <span class="mr-1">
+                                            <del>$250</del>
+                                        </span>
+                                        <span>$180</span>
+                                    </p>
+
+                                    <p class="lead font-weight-bold">Description</p>
+
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero
+                                        eos atque quia
+                                        ipsa.</p>
+
+                                    <form class="d-flex justify-content-left">
+                                        <!-- Default input -->
+                                        <input type="number" value="1" aria-label="Search" class="form-control"
+                                            style="width: 100px">
+                                        <button class="btn btn-primary btn-md my-0 p" type="submit"><a
+                                                href="addcart.html">Add to
+                                                cart></a>
+                                            <i class="fas fa-shopping-cart ml-1"></i>
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/hugo-delauney-nKAJyiYfXuM-unsplash.jpg" class="first-image">
+                                <div class="p-4">
+
+                                    <div class="mb-3">
+                                        <a href="">
+                                            <span class="badge purple mr-1">Category 2</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge blue mr-1">New</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge red mr-1">Bestseller</span>
+                                        </a>
+                                    </div>
+
+                                    <p class="lead">
+                                        <span class="mr-1">
+                                            <del>$300</del>
+                                        </span>
+                                        <span>$200</span>
+                                    </p>
+
+                                    <p class="lead font-weight-bold">Description</p>
+
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero
+                                        eos atque quia
+                                        ipsa.</p>
+
+                                    <form class="d-flex justify-content-left">
+                                        <!-- Default input -->
+                                        <input type="number" value="1" aria-label="Search" class="form-control"
+                                            style="width: 100px">
+                                        <button class="btn btn-primary btn-md my-0 p" type="submit"><a
+                                                href="addcart.html">Add to
+                                                cart></a>
+                                            <i class="fas fa-shopping-cart ml-1"></i>
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-md-4 col-lg-4 col-sm-6">
+                            <div class="card">
+                                <img src="img/shahrukh-rehman-05IxAEjVNl0-unsplash.jpg" class="first-image">
+                                <div class="p-4">
+
+                                    <div class="mb-3">
+                                        <a href="">
+                                            <span class="badge purple mr-1">Category 2</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge blue mr-1">New</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge red mr-1">Bestseller</span>
+                                        </a>
+                                    </div>
+
+                                    <p class="lead">
+                                        <span class="mr-1">
+                                            <del>$280</del>
+                                        </span>
+                                        <span>$ 190</span>
+                                    </p>
+
+                                    <p class="lead font-weight-bold">Description</p>
+
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero
+                                        eos atque quia
+                                        ipsa.</p>
+
+                                    <form class="d-flex justify-content-left">
+                                        <!-- Default input -->
+                                        <input type="number" value="1" aria-label="Search" class="form-control"
+                                            style="width: 100px">
+                                        <button class="btn btn-primary btn-md my-0 p" type="submit"><a
+                                                href="addcart.html">Add to
+                                                cart></a>
+                                            <i class="fas fa-shopping-cart ml-1"></i>
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/carlos-esteves-Ae3OHpJfngc-unsplash.jpg" class="first-image">
+                                <div class="p-4">
+                                    <div class="mb-3">
+                                        <a href="">
+                                            <span class="badge purple mr-1">Category 2</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge blue mr-1">New</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge red mr-1">Bestseller</span>
+                                        </a>
+                                    </div>
+
+                                    <p class="lead">
+                                        <span class="mr-1">
+                                            <del>$250</del>
+                                        </span>
+                                        <span>$180</span>
+                                    </p>
+
+                                    <p class="lead font-weight-bold">Description</p>
+
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero
+                                        eos atque quia
+                                        ipsa.</p>
+
+                                    <form class="d-flex justify-content-left">
+                                        <!-- Default input -->
+                                        <input type="number" value="1" aria-label="Search" class="form-control"
+                                            style="width: 100px">
+                                        <button class="btn btn-primary btn-md my-0 p" type="submit"><a
+                                                href="addcart.html">Add to
+                                                cart></a>
+                                            <i class="fas fa-shopping-cart ml-1"></i>
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/hugo-delauney-nKAJyiYfXuM-unsplash.jpg" class="first-image">
+                                <div class="p-4">
+
+                                    <div class="mb-3">
+                                        <a href="">
+                                            <span class="badge purple mr-1">Category 2</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge blue mr-1">New</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge red mr-1">Bestseller</span>
+                                        </a>
+                                    </div>
+
+                                    <p class="lead">
+                                        <span class="mr-1">
+                                            <del>$300</del>
+                                        </span>
+                                        <span>$200</span>
+                                    </p>
+
+                                    <p class="lead font-weight-bold">Description</p>
+
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero
+                                        eos atque quia
+                                        ipsa.</p>
+
+                                    <form class="d-flex justify-content-left">
+                                        <!-- Default input -->
+                                        <input type="number" value="1" aria-label="Search" class="form-control"
+                                            style="width: 100px">
+                                        <button class="btn btn-primary btn-md my-0 p" type="submit"><a
+                                                href="addcart.html">Add to
+                                                cart></a>
+                                            <i class="fas fa-shopping-cart ml-1"></i>
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4 col-lg-4 col-sm-6">
+                            <div class="card">
+                                <img src="img/ern-gan-3vSGyBo8_pU-unsplash.jpg" class="first-image">
+                                <div class="p-4">
+
+                                    <div class="mb-3">
+                                        <a href="">
+                                            <span class="badge purple mr-1">Category 2</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge blue mr-1">New</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge red mr-1">Bestseller</span>
+                                        </a>
+                                    </div>
+
+                                    <p class="lead">
+                                        <span class="mr-1">
+                                            <del>$280</del>
+                                        </span>
+                                        <span>$ 190</span>
+                                    </p>
+
+                                    <p class="lead font-weight-bold">Description</p>
+
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero
+                                        eos atque quia
+                                        ipsa.</p>
+
+                                    <form class="d-flex justify-content-left">
+                                        <!-- Default input -->
+                                        <input type="number" value="1" aria-label="Search" class="form-control"
+                                            style="width: 100px">
+                                        <button class="btn btn-primary btn-md my-0 p" type="submit"><a
+                                                href="addcart.html">Add to
+                                                cart></a>
+                                            <i class="fas fa-shopping-cart ml-1"></i>
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="carousel-item ">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/john-torcasio-133Vq4tTpBQ-unsplash.jpg" class="first-image">
+                                <div class="p-4">
+                                    <div class="mb-3">
+                                        <a href="">
+                                            <span class="badge purple mr-1">Category 2</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge blue mr-1">New</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge red mr-1">Bestseller</span>
+                                        </a>
+                                    </div>
+
+                                    <p class="lead">
+                                        <span class="mr-1">
+                                            <del>$250</del>
+                                        </span>
+                                        <span>$180</span>
+                                    </p>
+
+                                    <p class="lead font-weight-bold">Description</p>
+
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero
+                                        eos atque quia
+                                        ipsa.</p>
+
+                                    <form class="d-flex justify-content-left">
+                                        <!-- Default input -->
+                                        <input type="number" value="1" aria-label="Search" class="form-control"
+                                            style="width: 100px">
+                                        <button class="btn btn-primary btn-md my-0 p" type="submit"><a
+                                                href="addcart.html">Add to
+                                                cart></a>
+                                            <i class="fas fa-shopping-cart ml-1"></i>
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/leon-seibert-yxmZAgItVGU-unsplash.jpg" class="first-image">
+                                <div class="p-4">
+
+                                    <div class="mb-3">
+                                        <a href="">
+                                            <span class="badge purple mr-1">Category 2</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge blue mr-1">New</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge red mr-1">Bestseller</span>
+                                        </a>
+                                    </div>
+
+                                    <p class="lead">
+                                        <span class="mr-1">
+                                            <del>$300</del>
+                                        </span>
+                                        <span>$200</span>
+                                    </p>
+
+                                    <p class="lead font-weight-bold">Description</p>
+
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero
+                                        eos atque quia
+                                        ipsa.</p>
+
+                                    <form class="d-flex justify-content-left">
+                                        <!-- Default input -->
+                                        <input type="number" value="1" aria-label="Search" class="form-control"
+                                            style="width: 100px">
+                                        <button class="btn btn-primary btn-md my-0 p" type="submit"><a
+                                                href="addcart.html">Add to
+                                                cart></a>
+                                            <i class="fas fa-shopping-cart ml-1"></i>
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4 col-lg-4 col-sm-6">
+                            <div class="card">
+                                <img src="img/shahrukh-rehman-05IxAEjVNl0-unsplash.jpg" class="first-image">
+                                <div class="p-4">
+
+                                    <div class="mb-3">
+                                        <a href="">
+                                            <span class="badge purple mr-1">Category 2</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge blue mr-1">New</span>
+                                        </a>
+                                        <a href="">
+                                            <span class="badge red mr-1">Bestseller</span>
+                                        </a>
+                                    </div>
+
+                                    <p class="lead">
+                                        <span class="mr-1">
+                                            <del>$280</del>
+                                        </span>
+                                        <span>$ 190</span>
+                                    </p>
+
+                                    <p class="lead font-weight-bold">Description</p>
+
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero
+                                        eos atque quia
+                                        ipsa.</p>
+
+                                    <form class="d-flex justify-content-left">
+                                        <!-- Default input -->
+                                        <input type="number" value="1" aria-label="Search" class="form-control"
+                                            style="width: 100px">
+                                        <button class="btn btn-primary btn-md my-0 p" type="submit"><a
+                                                href="addcart.html">Add to
+                                                cart></a>
+                                            <i class="fas fa-shopping-cart ml-1"></i>
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</main>
+<!--product card detail ends here-->
+
+{% endblock %}
