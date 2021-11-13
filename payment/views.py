@@ -4,9 +4,10 @@ from rave_python import Rave, RaveExceptions
 from store.models import Product
 from order.models import Order, orderItem
 from .forms import PaymentForm 
-from .encoder import PythonObjectEncoder
-from json import dumps, loads, JSONEncoder, JSONDecoder
+
+
 import pickle
+import requests
 # Create your views here.
 
 
@@ -30,8 +31,9 @@ class PaymentProcess(View):
         order_item  = orderItem.objects.get(order=order)
         product = order_item.product
         shop = product.shop
-        amount = order.get_total_cost()
-        rave = Rave(shop.public_key, shop.secret_key, usingEnv=False)
+        secret_key = str(shop.secret_key)
+        amount = str(order.get_total_cost())
+        print(secret_key)
 
         form = PaymentForm(self.request.POST)
         
@@ -42,20 +44,24 @@ class PaymentProcess(View):
             phonenumber = str(cc["phone_number"])
             print(phonenumber)
             payload = {
-                "amount" : amount,
-                "network": network,
-                "email": email,
-                "phonenumber": phonenumber,
-                "IP": '',
-                "redirect_url": "https://rave-webhook.herokuapp.com/receivepayment"
+               "amount": amount ,
+               "email": email ,
+               "currency": 'GHS',
+               "mobile_money": {
+                   "phone": "0551234987",
+                   "provider": 'mtn' 
+               }
             } 
+            headers = {
+                "Authorization": "Bearer" + " " + secret_key,
+                "Content-Type": "application/json"
 
-            try:
+            }
 
-                response = loads(rave.GhMobile.charge(payload), cls=PythonObjectEncoder)
+            url = "https://api.paystack.co/charge"
+            response = requests.post(url, json=payload, headers=headers)
+            print(response.content)
 
-            except RaveExceptions.TransactionChargeError as e:
-                print(e.err['errMsg'])
-        
+            
 
         return render(self.request, self.template)
