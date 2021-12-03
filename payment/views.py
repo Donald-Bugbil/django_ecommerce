@@ -1,12 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View
-from rave_python import Rave, RaveExceptions
 from store.models import Product
 from order.models import Order, orderItem
 from .forms import PaymentForm 
-
-
-import pickle
 import requests
 # Create your views here.
 
@@ -62,6 +58,9 @@ class PaymentProcess(View):
             response = requests.post(url, json=payload, headers=headers)
             print(response.content)
 
+            context ={
+                'form': form
+            }
             
 
-        return render(self.request, self.template)
+        return render(self.request, self.template, context)
