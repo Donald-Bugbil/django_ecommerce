@@ -6,8 +6,7 @@ from .models import orderItem
 from django.urls import reverse
 from store.models import Product
 from django.http import HttpResponseRedirect
-import simplejson as json
-from django.core.serializers import serialize
+
 
 
 
@@ -54,9 +53,7 @@ class OrderCreate(View):
                 price=cart_item['price'],
                 quantity=cart_item['quantity']
             )
-            serial_object = serialize('json', [ product, ])
-        
-            cart.Delete(serial_object)
+    
             return HttpResponseRedirect(reverse('payment:paymentprocess', kwargs={'order_id': order.id}))
             context = {
                 "form": form,
