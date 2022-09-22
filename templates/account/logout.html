@@ -1,2 +1,15 @@
 {% extends 'home.html' %}
 
+{% block content %}
+    <div class="container d-flex justify-content-center" style="margin-top:20vh;">
+        <div class="w-50">
+            <h2>Are you sure you want to log out</h2>
+            <form action="" method="POST"> 
+                {% csrf_token %}
+
+                <button class="btn btn-danger" type="submit">log out</button>
+            </form>
+        </div>
+    </div>   
+
+{% endblock content %}

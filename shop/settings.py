@@ -158,7 +158,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -166,6 +166,17 @@ ACCOUNT_FORMS = {
     'login': 'accounts.forms.CustomSigninForm',
     'signup': 'accounts.forms.CustomSignupForm',
 }
+
+ANYMAIL = {
+    # (exact settings here depend on your ESP...)
+    "MAILGUN_API_KEY": "a23a20c7ba571a12fd484c115fc5052a-602cc1bf-622f041d",
+    "MAILGUN_SENDER_DOMAIN": 'sandboxf2bd78bcad7e49d59cba7f0a0768bbca.mailgun.org',  # your Mailgun domain, if needed
+}
+
+EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+DEFAULT_FROM_EMAIL = "donaldmoore340@gmail.com"
+SERVER_EMAIL = "your-server@example.com"
+
 
 #ACCOUNT_SESSION_REMEMBER = True
 
